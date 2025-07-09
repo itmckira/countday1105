@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>随机角色组合生成器</title>
+  <style>
+    body {
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background-color: #f9f7f2;
+      margin: 0;
+      padding: 30px;
+      color: #333;
+    }
+
+    h1 {
+      font-weight: bold;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4b2e83;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px 30px;
+      margin: 0 auto 20px;
+      max-width: 600px;
+    }
+
+    .group {
+      margin-bottom: 18px;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #4b2e83;
+      margin-bottom: 5px;
+    }
+
+    .content {
+      font-size: 16px;
+      padding-left: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 30px auto 0;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4b2e83;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #381f5c;
+    }
+  </style>
+</head>
+<body>
+  <h1>随机角色组合生成器</h1>
+
+  <div class="card">
+    <div class="group">
+      <div class="title">第一位：</div>
+      <div class="content" id="group1"></div>
+    </div>
+
+    <div class="group">
+      <div class="title">第二位：</div>
+      <div class="content" id="group2"></div>
+    </div>
+
+    <div class="group">
+      <div class="title">风格：</div>
+      <div class="content" id="style"></div>
+    </div>
+
+    <div class="group">
+      <div class="title">场景：</div>
+      <div class="content" id="scene"></div>
+    </div>
+
+    <div class="group">
+      <div class="title">关系：</div>
+      <div class="content" id="relation"></div>
+    </div>
+  </div>
+
+  <button onclick="generateGroups()">生成角色组合</button>
+
+  <script>
+    const aOptions = [
+      "辛者库宫女", "冷宫妃子", "偷情侍卫", "得宠妃子", "夹子皇帝",
+      "野心王爷", "垂涎皇上美色的王爷", "王爷假扮的太监", "当太子养的公主", "非亲生太子",
+      "扎针的容嬷嬷", "白莲花公主", "爬床宫女", "好男色的将军", "暗杀皇帝的御医",
+      "跟所有妃子暧昧的御医", "男扮女装的宰相", "吃瓜娘娘"
+    ];
+
+    const bOptions = [
+      "懦弱", "废话多", "结巴", "凶狠", "温柔", "撒娇", "自恋", "猥琐", "自说自话", "正义",
+      "贪婪", "凶悍", "刻薄", "寡言", "卖惨", "高冷", "爱哭", "妩媚", "爱说叠字", "说反话"
+    ];
+
+    const cOptions = ["苦情", "欢脱", "言情", "BE", "中二", "狗血"];
+
+    const dOptions = [
+      "花园", "早朝", "寿宴", "臭水沟", "寝殿", "动物园", "柴房", "药房", "茅房", "书房",
+      "刑场", "树上", "浴池", "厨房", "红楼", "酒楼", "冷宫", "寺庙", "马车", "轿子",
+      "菜市场", "集市", "井里", "田里", "船上", "山洞", "悬崖边", "衣柜里", "床底下", "马舍",
+      "学堂", "冰窟", "开封府", "牢里"
+    ];
+
+    const relationTags = [
+      "青梅竹马", "死对头", "暗恋关系", "上下属", "未婚夫妻",
+      "仇人", "父子母女", "兄弟姊妹", "情敌", "双重身份", "床伴", "密谋同盟", "主仆", "前世恋人"
+    ];
+
+    function getRandomItem(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+    function generateCharacter() {
+      const a = getRandomItem(aOptions);
+      const b = getRandomItem(bOptions);
+      return `${a}、${b}`;
+    }
+
+    function generateGroups() {
+      const style = getRandomItem(cOptions);
+      const scene = getRandomItem(dOptions);
+      const relation = getRandomItem(relationTags);
+
+      let g1 = generateCharacter();
+      let g2;
+
+      do {
+        g2 = generateCharacter();
+      } while (g1 === g2);
+
+      document.getElementById("group1").textContent = g1;
+      document.getElementById("group2").textContent = g2;
+      document.getElementById("style").textContent = style + "风";
+      document.getElementById("scene").textContent = scene;
+      document.getElementById("relation").textContent = relation;
+    }
+  </script>
+</body>
+</html>
