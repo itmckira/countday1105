@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>倒數計時：11/4</title>
+  <title>倒數計時：10/22/2026</title>
   <style>
     :root {
       --bg-gradient: linear-gradient(135deg, #f9e5e5, #d2f5ff, #ffe8a3);
@@ -103,20 +103,20 @@
 </head>
 <body>
   <div class="container">
-    <h1>距離 2025 年 11 月 4 日</h1>
+    <h1>距離 2026 年 10 月 22 日</h1>
     <div class="count-row" id="countdown1">載入中...</div>
     <div class="count-row" id="countdown2">載入中...</div>
   </div>
 
   <script>
-    const targetDate = new Date("2025-11-04T00:00:00+08:00");
+    const targetDate = new Date("2026-10-22T00:00:00+08:00");
 
     function updateCountdown() {
       const now = new Date();
       let diff = targetDate - now;
 
       if (diff <= 0) {
-        document.getElementById("countdown1").textContent = "已到達 11/4！";
+        document.getElementById("countdown1").textContent = "已到達 10/22/2026！";
         document.getElementById("countdown2").textContent = "";
         return;
       }
